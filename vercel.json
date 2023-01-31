@@ -1,6 +1,15 @@
 {
   "version": 2,
-  "name": "demo-video-stream",
-  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/src/index.js" }]
+  "builds": [
+    {
+      "src": "/src/index.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.js"
+    }
+  ]
 }
