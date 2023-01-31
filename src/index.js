@@ -31,7 +31,7 @@ app.get("/videos/:filename", (req, res) => {
   if (!fileName.includes(".mp4"))
     return res.status(400).send({ error: "invalid video name" });
 
-  const file = path.resolve(__dirname, "../videos", fileName);
+  const file = path.resolve(__dirname, "../uploads/videos", fileName);
   res.setHeader("Content-Disposition", `inline; filename="${fileName}"`);
   res.setHeader("Content-Type", "video/mp4");
   res.sendFile(file);
