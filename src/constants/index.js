@@ -2,10 +2,7 @@ const path = require("path");
 const videoPath = path.resolve(__dirname, "../../uploads/videos");
 
 const corsOptions = {
-  origin: "*",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
+  origin: ["http://localhost:5173", "http://localhost:3000"],
 };
 
 module.exports = {
