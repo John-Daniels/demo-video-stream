@@ -8,7 +8,12 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "http://127.0.0.1:5173",
+      "https://no-actions.vercel.app",
+      "http://127.0.0.1:5174",
+      "http://127.0.0.1:5000",
+    ],
   })
 );
 
