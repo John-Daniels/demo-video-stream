@@ -4,6 +4,7 @@ const path = require("path");
 const { videoUpload } = require("./services/uploads/uploads");
 const fs = require("fs");
 const { videoPath } = require("./constants/index");
+const verifyToken = require("./middleware/auth");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,7 +27,7 @@ app.post("/videos/", videoUpload.single("video"), (req, res) => {
   });
 });
 
-app.get("/videos/:filename", (req, res) => {
+app.get("/videos/:filename", verifyToken, (req, res) => {
   const fileName = req.params.filename;
   if (!fileName.includes(".mp4"))
     return res.status(400).send({ error: "invalid video name" });
@@ -68,3 +69,8 @@ app.get("/videos/:filename", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
+
+// generate token
+// const jwt = require("jsonwebtoken");
+// const token = jwt.sign({ username: "johnkoder" }, "johnkoder+ishayasolo");
+// console.log('token', token);
