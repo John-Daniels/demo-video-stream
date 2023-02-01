@@ -3,13 +3,14 @@ const cors = require("cors");
 const path = require("path");
 const { videoUpload } = require("./services/uploads/uploads");
 const fs = require("fs");
-const { videoPath } = require("./constants/index");
+const { videoPath, corsOptions } = require("./constants/index");
 const verifyToken = require("./middleware/auth");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(express.json());
 
 app.get("/", (req, res) => res.send("Hello World!!!"));
 
